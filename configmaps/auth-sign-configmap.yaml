@@ -1,0 +1,55 @@
+apiVersion: v1
+data:
+  auth-sign.cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIF4DCCA8igAwIBAgIQIofyO8DUe6DnxlYc6nmkJzANBgkqhkiG9w0BAQsFADAy
+    MRMwEQYDVQQKDApEWU5BU1RSVUNUMRswGQYDVQQDDBJEeW5hc3RydWN0IFJvb3Qg
+    Q0EwHhcNMjAwMzA4MTM0MjQ4WhcNMjEwMzA3MTM0MjQ4WjApMRMwEQYDVQQKDApE
+    WU5BU1RSVUNUMRIwEAYDVQQDDAlBVV9TSUdORVIwggGiMA0GCSqGSIb3DQEBAQUA
+    A4IBjwAwggGKAoIBgQC/+P8IhncW8R2SOxhhLgsSZj4PElO9DcjEX7G6MvtrBZ3e
+    iuDy8ataFprdRIWb27T+qvFHdhF400qpj50qgg/GMIfL3ZpblUK1hgXkkHRF1dGe
+    D47ESmEbxCBF6c2LDsR5iFX0WnmFqJqbnt2DFHGc7wRVOIG/6Ty+xmZydrQUqSxb
+    ZkHkrpd61Izr7IE6wBXZV6+lGL0e6HUy1N2hi4KSs9+dTa9VearLPt+mYPWjtmGS
+    hnmTB+bF0RJ8dBi78tTrBTqNQ5Hl8kQMTUJRSoXAIsTHgleYdslrG/dqTZPsIVGw
+    OAh4yLusMC6IyFiuHGCuzwTSAehQIhWe2tT6+rdUiCtEZ9yxCkAsfrC0AApT27At
+    AAXSHUBXgTYblldbmNrnUas9FHi0+cXOSI21vSh1zTBfyXpE/5/fzYYUWx/vqh0p
+    w3jbCU1ZbiO8UDzH1entJ9W0iyPU/9pWvJWSXz84EDY+QGgbI86fPB6lCGHP7zjx
+    2tBg5zaONBgUDk2HfukCAwEAAaOCAXkwggF1MAkGA1UdEwQCMAAwDgYDVR0PAQH/
+    BAQDAgeAMB0GA1UdDgQWBBTAqC5P7rLAPQp/uFtB1u3RNGFpuDAfBgNVHSMEGDAW
+    gBTj6sWskMBN+ZtdIxNJgS5JzwzQeTAJBgNVHRIEAjAAMHEGCCsGAQUFBwEBBGUw
+    YzBhBggrBgEFBQcwAoZVaHR0cDovL2NhLmV4YW1wbGUubmV0L2NlcnRzL2V4YW1w
+    bGUubmV0X0ludGVybWVkaWF0ZV9DZXJ0aWZpY2F0aW9uX0F1dGhvcml0eS5jZXJ0
+    LnBlbTBfBgNVHR8EWDBWMFSgUqBQhk5odHRwOi8vY2EuZXhhbXBsZS5uZXQvY3Js
+    L2V4YW1wbGUubmV0X0ludGVybWVkaWF0ZV9DZXJ0aWZpY2F0aW9uX0F1dGhvcml0
+    eS5jcmwwOQYDVR0RBDIwMIYWaHR0cDovL2NhLmV4YW1wbGUubmV0L4EWY2VydG1h
+    c3RlckBleGFtcGxlLm5ldDANBgkqhkiG9w0BAQsFAAOCAgEAeonbxNYfiLaVOY/H
+    8iqbwcC3C1H3CSwCOqdYpPGtkugw0zV9C1r1lVDgfPmN/2pzSClUeAfJZNwMNnNa
+    TphENsvlERZCip4mykwx9lshtCivzZblgx8APZmv+/WMS5bS/YIjMvEjL0xgy/qm
+    oAyp0DBlWNiMh9FY2uAWokjLKukChpF4xjE2IHMxIJmLcmVtSbkXICgzxAIqaD4J
+    Ts9hn+Ysbe02xkqOtcgNLOPWTNQh4j4Dxd6HnogjDs4+/njDFVXZvVgiWEMhpUMz
+    xhn994+A+rPmAxyTXyTo64KZeH65IBwgl/K73Ge0d4/CCaRPh9+avl+NFNfYsqCD
+    OTsNQD4hmBB9bPJAKlOJs7VWX1/W6IoQPYxLKvxGQNYg5+acUt5q+YRuKf0LBNCK
+    WrdvyVTuCNMLRcKW9GP+XSGTHC7TObP1YFRV+PTHhEI3imCb5uzWfIodD9WSLyoE
+    uBRag7qyH6yoO9zEqrR3ZiqORoU2qsGkWmLqI0Kfk69/ktfTTdgwGTNIM3sfLFAf
+    E2x9LUzS9sV8XgkQeHTYpICXZ3u1WXhXD2W99BjMpYht5bhQpqY4REDaJxMR89so
+    jRrmKwOAOFZlRjajA4x7n6FT9XIHFzz6BEewSaX+ITThhpaIMc88fBaUkxiuUzu9
+    dh57+42VjbMagGeANMXVo3xA2UM=
+    -----END CERTIFICATE-----
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2020-04-29T19:10:00Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:auth-sign.cert.pem: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-04-29T19:10:00Z"
+  name: api-gateway-config
+  namespace: default
+  resourceVersion: "815731"
+  selfLink: /api/v1/namespaces/default/configmaps/api-gateway-config
+  uid: e962e836-d378-4e15-aa29-f46a9345753a

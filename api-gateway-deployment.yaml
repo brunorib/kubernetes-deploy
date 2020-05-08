@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: api-gateway
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: api-gateway
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/backend: "true"
+        io.kompose.service: api-gateway
+    spec:
+      containers:
+      - env:
+        - name: AUTH_BASE_URL
+          value: http://auth:4567
+        - name: AUTH_PEM_PATH
+          value: /home/node/auth/auth-sign.cert.pem
+        - name: PORT
+          value: "8080"
+        - name: WORKFLOW_BASE_URL
+          value: http://workflow:5000
+        image: brunoribca/api-gateway:0.0.0
+        imagePullPolicy: "Always"
+        name: api-gateway
+        ports:
+        - containerPort: 8080
+        resources: {}
+        volumeMounts:
+        - name: config
+          mountPath: /home/node/auth
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      # You set volumes at the Pod level, then mount them into containers inside that Pod
+      - name: config
+        configMap:
+          # Provide the name of the ConfigMap you want to mount.
+          name: api-gateway-config

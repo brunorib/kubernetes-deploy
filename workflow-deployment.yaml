@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: workflow
+  name: workflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: workflow
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/backend: "true"
+        io.kompose.service: workflow
+    spec:
+      containers:
+      - env:
+        - name: APP_SETTINGS
+          value: development
+        - name: DATABASE_URL
+          value: postgresql://workflow:pass@workflow-db:5432/workflow
+        - name: K
+          value: "100"
+        - name: LOG_LEVEL
+          value: INFO
+        - name: RABBIT_MQ_QUEUE
+          value: rpc-queue
+        - name: RABBIT_MQ_URL
+          value: amqp://guest:guest@workflow-rabbitmq:5672
+        - name: SECRET
+          value: THE-SUPER-SECRET
+        image: brunoribca/workflow-mq:0.1.0
+        imagePullPolicy: "Always"
+        name: workflow
+        ports:
+        - containerPort: 5000
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
