@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: worker-service
+  name: worker-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      io.kompose.service: worker-service
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/backend: "true"
+        io.kompose.service: worker-service
+    spec:
+      containers:
+      - env:
+        - name: KEYSTORE_PASS
+          value: "1234"
+        - name: KEYSTORE_PATH
+          value: /usr/keystore/worker-sign.p12
+        - name: RABBIT_MQ_QUEUE
+          value: rpc-queue
+        - name: RABBIT_MQ_URL
+          value: amqp://guest:guest@workflow-rabbitmq:5672
+        - name: RUST_LOG
+          value: info
+        image: brunoribca/worker-mq:0.1.0
+        imagePullPolicy: "Always"
+        name: worker-service
+        resources: {}
+        volumeMounts:
+        - mountPath: /usr/keystore/
+          name: keystore
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+        # You set volumes at the Pod level, then mount them into containers inside that Pod
+        - name: keystore
+          configMap:
+            # Name of the ConfigMap you want to mount.
+            name: worker-keystore
+status: {}
