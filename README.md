@@ -8,7 +8,7 @@ https://microk8s.io/#get-started
 clone this repository
 
 use 
-$kubectl apply -f
+$kubectl apply -f .
 
 on folders in order:
 configmaps/
